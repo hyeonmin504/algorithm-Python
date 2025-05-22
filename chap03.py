@@ -30,3 +30,13 @@ print(str.isalpha())
 print(str.isdecimal())
 print(str[-1].isdecimal())
 print(str[-1].isalpha())
+
+#pass
+#아무것도 안하고 넘어감
+if int(input()) > 0:
+    pass
+
+#raise NotImplementError
+#강제 오류를 통해 미구현을 의미
+if int(input()) > 0:
+    raise NotImplementedError
