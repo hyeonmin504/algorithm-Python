@@ -124,3 +124,5 @@ print(array)
 #리스트 이름 = [표현식 for 반복자 in 반복할 수 있는 것 if 조건문]
 array2 = [j for j in array if j != 4]
 print(array2)
+
+list.__reversed__()
