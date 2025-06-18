@@ -103,3 +103,100 @@ def solution1_14(absolutes, signs):
 #없는 숫자 더하기
 def solution1_15(numbers):
     return 45 - sum(map(int, set(numbers)))
+#나누어 떨어지는 숫자 배열
+def solution1_16(arr, divisor):
+    result = []
+    result = [i for i in arr if i%divisor == 0]
+    if not result:
+        return [-1]
+    result.sort()
+    return result
+#서울에 김서방 찾기
+def solution1_17(seoul):
+    result = []
+    for i in seoul:
+        if i == "Kim":
+            break
+        result.append(i)
+    return "김서방은 {}에 있다".format(len(result))
+def findKim(seoul):
+    return "김서방은 {}에 있다".format(seoul.index('Kim'))
+#콜라츠 추측
+def solution1_18(num):
+    for i in range(0,500):
+        if num == 1:
+            return i
+        if num % 2 == 0:
+            num /= 2
+        else:
+            num = num * 3 + 1
+    return -1
+#핸드폰 번호 가리기
+def solution1_19(phone_number):
+    new_phone_num = ""
+    for i in range(0,len(phone_number)):
+        if i >= len(phone_number)-4:
+            new_phone_num += phone_number[i]
+        else:
+            new_phone_num += "*"
+    return new_phone_num
+# return ('*'*(len(s)-4)) + s[-4:]
+#가운데 글자 가져오기
+def solution1_20(sa):
+    s = list(sa)
+    if len(s)%2==1:
+        return s[len(s)//2]
+    return s[len(s)//2-1] + s[len(s)//2]
+#def string_middle(str):
+#   return str[(len(str)-1)//2 : len(str)//2 + 1]
+#제일 작은 수 제거하기
+def solution2_1(arr):
+    min_num = min(arr)
+    arr.remove(min_num)
+    if arr == []:
+        return [-1]
+    return arr
+#내적
+def solution2_2(a, b):
+    sum = 0
+    for i in range(0,len(a)):
+        sum += (a[i] * b[i])
+    return sum
+#수박수박수박수박수?
+def solution2_3(n):
+    if n%2 == 0:
+        return "수박"*(n//2)
+    return "수박"*(n//2)+"수"
+#약수의 개수와 덧셈
+def solution2_4(left, right):
+    sum = 0
+    for i in range(left,right+1):
+        if int(i**0.5) == i**0.5:
+            sum -= i
+        else: sum +=i
+    return sum
+#문자열 내림차순으로 배치하기
+def solution2_5(s):
+    return ''.join(sorted(s, reverse = True))
+#부족한 금액 계산하기
+def solution2_6(price, money, count):
+    rest = money - sum(i for i in range(1,count+1))*price
+    if rest > 0:
+        return 0
+    return -rest
+#문자열 다루기 기본
+def solution2_7(s):
+    return (len(s) == 4 or len(s) == 6) and s.isdigit()
+#행렬의 덧셈
+def solution2_8(arr1, arr2):
+    result = []
+    for i in range(len(arr1)):
+        for j in range(len(arr2[0])):
+            arr1[i][j] += arr2[i][j]
+    return arr1
+#직사각형 별찍기
+a, b = map(int, input().strip().split(' '))
+result =""
+for _ in range(b):
+    result += "*"*a + "\n"
+print(result)
