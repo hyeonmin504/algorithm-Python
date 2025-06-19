@@ -196,7 +196,52 @@ def solution2_8(arr1, arr2):
     return arr1
 #직사각형 별찍기
 a, b = map(int, input().strip().split(' '))
-result =""
-for _ in range(b):
-    result += "*"*a + "\n"
-print(result)
+for i in range(0,b):
+    print('*'*a)
+#같은 숫자는 싫어 -> [:] 슬라이싱은 인덱스를 초과해도 오류가 안뜬다.
+def solution2_10(arr):
+    arr.append(10)
+    return [arr[i] for i in range(0,len(arr)-1) if arr[i] != arr[i+1]]
+#최대공약수 최소공배수
+def solution2_11(n, m):
+    answer = []
+    n_measure = [i for i in range(1,n+1) if n%i == 0]
+    m_measure = [i for i in range(1,m+1) if m%i == 0]
+    if n<m:
+        answer.append(max([i for i in n_measure if m%i == 0]))
+        answer.append(min([i*n for i in m_measure if (n*i)%m == 0]))
+    else:
+        answer.append(max([i for i in m_measure if n%i == 0]))
+        answer.append(min([i*n for i in m_measure if (n*i)%m == 0]))
+    return answer
+#def solution(n, m): -> 유클리드 공약수 공배수
+    # def gcd(a, b): 최대 공약수: a를 b로 나눈 나머지로 계속 나누다 0이 되면 b가 최대공약수다
+    #     while b:
+    #         a, b = b, a % b
+    #     return a
+    #
+    # g = gcd(n, m)
+    # l = (n * m) // g 최소 공배수: a*b를 최대공약수로 나누면 최소공배수다.
+    # return [g, l]
+#크기가 작은 부분문자열
+def solution2_12(t, p):
+    return len([i for i in range(0,1+len(t)-len(p)) if t[i:i+len(p)] <= p])
+#예산
+def solution2_13(d, budget):
+    d_sorted = sorted(d)
+    count=0
+    for i in d_sorted:
+        budget -= i
+        if budget >= 0 :
+            count +=1
+        else: break
+    return count
+#3진법 뒤집기 -> int에는 n진법인 tmp를 10진법으로 변환해줌
+def solution2_14(n):
+    tmp = ''
+    while n:
+        tmp += str(n % 3)
+        n = n // 3
+
+    answer = int(tmp, 3)
+    return answer
