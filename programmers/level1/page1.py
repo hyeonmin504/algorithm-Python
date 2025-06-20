@@ -236,7 +236,7 @@ def solution2_13(d, budget):
             count +=1
         else: break
     return count
-#3진법 뒤집기 -> int에는 n진법인 tmp를 10진법으로 변환해줌
+#3진법 뒤집기 -> int에는 n진법인 tmp를 10진법으로 변환해
 def solution2_14(n):
     tmp = ''
     while n:
@@ -245,3 +245,54 @@ def solution2_14(n):
 
     answer = int(tmp, 3)
     return answer
+#삼총사
+def solution2_15(number):
+    result = 0
+    for i in range(0,len(number)):
+        for j in range(i+1,len(number)):
+            for k in range(j+1,len(number)):
+                if number[i]+number[j]+number[k] == 0:
+                    result +=1
+    return result
+#이상한 문자 만들기
+def solution2_16(s):
+    list_str = s.split(" ")
+    result = ""
+    for word in list_str:
+        temp = ''
+        for i in range(len(word)):
+            if i % 2 == 0:
+                temp += word[i].upper()
+            else :
+                temp += word[i].lower()
+        result = result + temp + ' '
+    return result[0:-1]
+#파이썬의 문자열(str)은 **immutable(불변)**이라서,
+#i[j] = something처럼 인덱스로 직접 수정할 수 없습니다.
+#최소 직사각형
+def solution2_17(sizes):
+    wide = 0
+    high = 0
+    for size in sizes:
+        temp_w = 0
+        temp_h = 0
+        if size[0] < size[1]:
+            temp_w = size[1]
+            temp_h = size[0]
+        else :
+            temp_w = size[0]
+            temp_h = size[1]
+        if wide < temp_w:
+            wide = temp_w
+        if high < temp_h:
+            high = temp_h
+    return wide * high
+# def solution2_17(sizes): -> 2차원을 돌려서 1차원의 값을 가져옴
+#     row = 0
+#     col = 0
+#     for a, b in sizes:
+#         if a < b:
+#             a, b = b, a
+#         row = max(row, a)
+#         col = max(col, b)
+#     return row * col
