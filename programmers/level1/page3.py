@@ -40,3 +40,12 @@ def solution3_3(array, commands):
         sliced.sort()
         result.append(sliced[i[2]-1])
     return result
+#콜라 문제
+def solution3_4(a, b, n):
+    bottle = 0
+    rest = 0
+    while(n >= a):
+        bottle += n//a*b
+        rest = n%a
+        n = n//a*b + rest
+    return bottle
