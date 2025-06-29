@@ -49,3 +49,52 @@ def solution3_4(a, b, n):
         rest = n%a
         n = n//a*b + rest
     return bottle
+#문자열 내 마음대로 정렬하기
+def solution3_5(s):
+    answer = []
+    for string in strings:    
+        answer.append(string[n] + string)
+    answer.sort()
+    return [i[1:] for i in answer ]
+#명예의 전당 (1)
+def solution3_6(s):
+    answer = []
+    top_3 = []
+    for yesterday,point in enumerate(score):
+        if k > yesterday:
+            top_3.append(point)   
+        elif min(top_3) < point:
+            top_3.remove(min(top_3))
+            top_3.append(point)
+        answer.append(min(top_3))
+    return answer
+#카드 뭉치
+def solution3_7(cards1, cards2, goal):
+    for string in goal:
+        if cards1 and cards1[0] == string:
+            cards1.pop(0)
+            continue
+        elif cards2 and cards2[0] == string:
+            cards2.pop(0)
+            continue
+        return "No"
+    return "Yes"    
+#[1차] 비밀지도]
+def solution3_8(n, arr1, arr2):
+    answer = [] 
+    col = 0
+    for num1, num2 in zip(arr1, arr2):
+        rowData = ''
+        for i in range(0,n):
+            if num1 % 2 == 1 or num2 % 2 == 1:
+                rowData = '#' + rowData
+            else :
+                rowData = ' ' + rowData
+            if num1 >= 1:
+                num1 = num1//2
+            if num2 >= 1:
+                num2 = num2//2
+        answer.append(rowData)
+        print(answer)
+        col += 1
+    return answer
