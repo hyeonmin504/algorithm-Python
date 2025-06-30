@@ -98,3 +98,32 @@ def solution3_8(n, arr1, arr2):
         print(answer)
         col += 1
     return answer
+#추억 점수
+def solution3_9(name, yearning, photo):
+    answer = []
+    name_dict = dict(zip(name,yearning))
+    for index, array in enumerate(photo):
+        sum_year = 0
+        for string in photo[index]:
+            if string in name_dict:
+                sum_year += name_dict[string]
+        answer.append(sum_year)
+    return answer
+#기사단원의 무기
+def solution3_10(number, limit, power):
+    answer = 0
+    for i in range(1,number+1):
+        yaksu_cnt = 0
+        for index in range(1,int(i**0.5) +1):
+            if i%index == 0:
+                yaksu_cnt += 1
+                if i/index != index:
+                    yaksu_cnt += 1
+            if yaksu_cnt > limit:
+                yaksu_cnt = power
+                break
+        answer += yaksu_cnt
+    return answer
+#폰켓몬
+def solution3_11(nums):
+    return min(len(nums)//2, len(set(nums)))
