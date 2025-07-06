@@ -127,3 +127,60 @@ def solution3_10(number, limit, power):
 #폰켓몬
 def solution3_11(nums):
     return min(len(nums)//2, len(set(nums)))
+#2016년
+def solution3_12(a, b):
+    week = ["THU","FRI","SAT","SUN","MON","TUE","WED"]
+    sum_day = 0
+    for i in range(1,a):
+        if i in [4,6,9,11]:
+            sum_day += 30
+        elif i in [1,3,5,7,8,10,12]:
+            sum_day += 31
+        else: sum_day += 29
+    return week[(sum_day+b)%7]
+#모의고사
+def solution3_13(answers):
+    std1=[1, 2, 3, 4, 5]
+    std2=[2, 1, 2, 3, 2, 4, 2, 5]
+    std3=[3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+    p1,p2,p3 = 0,0,0
+    for num, answer in enumerate(answers):
+        if std1[num%5] == answer:
+            p1 += 1
+        if std2[num%8] == answer:
+            p2 += 1
+        if std3[num%10] == answer:
+            p3 += 1
+    answer = [p1,p2,p3]
+    return [index+1 for index, point in enumerate(answer) if point == max(answer)]
+#과일 장수
+def solution3_14(k, m, score):
+    score.sort(reverse = True)
+    box = len(score)//m
+    answer = 0
+    for box_cnt in range(0,box):
+        min_price = 0
+        min_price=score[(box_cnt+1)*m-1]
+        answer += m*min_price
+    return answer
+#덧칠하기
+def solution3_15(n, m, section):
+    secter = section[0] + m-1
+    count = 1
+    for i in section:
+        if secter < i:
+            secter = i+m-1
+            count += 1
+    return count
+#소수 찾기
+def solution3_16(n):
+    cnt = 0
+    for i in range(2,n+1):
+        correct = True
+        for j in range(2,int(i**0.5)+1):
+            if i%j==0:
+                correct = False
+                break
+        if correct :
+            cnt += 1
+    return cnt
