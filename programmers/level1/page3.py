@@ -50,14 +50,14 @@ def solution3_4(a, b, n):
         n = n//a*b + rest
     return bottle
 #문자열 내 마음대로 정렬하기
-def solution3_5(s):
+def solution3_5(strings, n):
     answer = []
     for string in strings:    
-        answer.append(string[n] + string)
+        answer.append(string[n] + string) 
     answer.sort()
     return [i[1:] for i in answer ]
 #명예의 전당 (1)
-def solution3_6(s):
+def solution3_6(score,k):
     answer = []
     top_3 = []
     for yesterday,point in enumerate(score):
@@ -184,3 +184,16 @@ def solution3_16(n):
         if correct :
             cnt += 1
     return cnt
+#소수 만들기
+def solution3_17(nums):
+    sum = 0
+    for i in range(0,len(nums)-2):
+        for j in range(i+1,len(nums)-1):
+            for k in range(j+1, len(nums)):
+                temp = nums[i] + nums[j] + nums[k]
+                sum += 1
+                for l in range(2,int(temp**0.5)+1):
+                    if temp%l == 0:
+                        sum -= 1
+                        break
+    return sum
