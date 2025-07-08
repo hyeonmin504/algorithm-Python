@@ -197,3 +197,33 @@ def solution3_17(nums):
                         sum -= 1
                         break
     return sum
+#옹알이 (2)
+def solution3_18(babbling):
+    bab = ["aya", "ye", "woo", "ma"]
+    babbab = ['ayaaya', 'yeye', 'woowoo', 'mama']
+    cnt = 0
+    temp = ''
+    for string in babbling:
+        temp = string
+        for word in bab:
+            temp = temp.replace(word, ' ')
+        temp = temp.strip()
+        for wordword in babbab:
+            if wordword in string:
+                temp = 'false'
+                break
+        if temp == '':
+            cnt += 1
+    return cnt
+#지폐 접기
+def solution3_19(wallet, bill):
+    cnt = 0
+    while(max(bill) > max(wallet) or min(bill) > min(wallet)):
+        if bill[0] == max(bill):
+            bill[0] = max(bill)//2
+        else:
+            bill[1] = max(bill)//2
+        cnt += 1
+        continue
+    return cnt
+    
