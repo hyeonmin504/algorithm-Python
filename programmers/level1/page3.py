@@ -226,4 +226,3 @@ def solution3_19(wallet, bill):
         cnt += 1
         continue
     return cnt
-    
