@@ -34,3 +34,25 @@ def solution4_2(lottos, win_nums):
     if worst > 6:
         worst = 6
     return [best,worst]
+#둘만의 암호
+def solution(s, skip, index):
+    abc_skip = [chr(j) for j in range(ord('a'), ord('z')+1) if chr(j) not in skip]
+    answer = ''
+    for char in s:
+        i = abc_skip.index(char)
+        answer += abc_skip[(i+index) % len(abc_skip)]
+    return answer
+#문자ㄹ 나누기
+def solution4_3(s):
+    answer, first, another = 0, 0, 0
+    for index, char in enumerate(s):
+        if first == 0 or temp == char:
+            temp = char
+            first += 1
+        else :
+            another += 1
+        if first == another or index == len(s)-1:
+            answer += 1
+            temp = ''
+            first, another = 0, 0
+    return answer
