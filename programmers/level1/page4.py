@@ -56,3 +56,21 @@ def solution4_3(s):
             temp = ''
             first, another = 0, 0
     return answer
+#대충 만든 자판
+def solution4_4(keymap, targets):
+    answer = []
+    dict = {}
+    for string in keymap:
+        for index, char in enumerate(string):
+            if char not in dict or dict[char] > index+1:
+                dict[char] = index + 1
+    for target in targets:
+        temp = 0
+        for char in target:
+            if char not in dict:
+                temp = -1
+                break
+            temp += dict[char]
+        answer.append(temp)
+    return answer
+#[PCCE 기출문제] 9번 / 이웃한 칸
