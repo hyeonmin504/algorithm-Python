@@ -74,3 +74,20 @@ def solution4_4(keymap, targets):
         answer.append(temp)
     return answer
 #[PCCE 기출문제] 9번 / 이웃한 칸
+def solution4_5(board, h, w):
+    answer = 0
+    dh = [0,1,-1,0]
+    dw = [1,0,0,-1]
+    for i in range(0,4):
+        temp = board[h][w]
+        if 0 <= h+dh[i] < len(board) and 0 <= w+dw[i] < len(board[h]) and temp == board[h+dh[i]][w+dw[i]]:
+            answer += 1
+    return answer
+#완주하지 못한 선수 -> hash, Collections.Counter, 비교연산자 - 3가지 방법
+def solution4_6(participant, completion):
+    participant.sort()
+    completion.sort()
+    for i in range(len(completion)):
+        if participant[i] != completion[i]:
+            return participant[i]
+    return participant[len(participant)-1]
