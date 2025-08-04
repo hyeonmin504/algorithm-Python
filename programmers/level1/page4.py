@@ -91,3 +91,21 @@ def solution4_6(participant, completion):
         if participant[i] != completion[i]:
             return participant[i]
     return participant[len(participant)-1]
+#체육복
+def solution4_7(n, lost, reserve):
+    # 집합으로 변환 (중복 제거 & 빠른 탐색)
+    lost_set = set(lost)
+    reserve_set = set(reserve)
+
+    # 여벌 체육복이 있지만 도난당한 학생
+    overlap = lost_set & reserve_set
+    lost_set -= overlap
+    reserve_set -= overlap
+
+    for r in sorted(reserve_set):
+        if r - 1 in lost_set:
+            lost_set.remove(r - 1)
+        elif r + 1 in lost_set:
+            lost_set.remove(r + 1)
+
+    return n - len(lost_set)
